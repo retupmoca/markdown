@@ -6,11 +6,11 @@ class Document {
     method to_html() {
         my $s;
         for self.children -> $c {
+            $s ~= '<p>';
             for $c.children -> $p {
-                $s ~= '<p>';
                 $s ~= $p.text ~~ Match ?? $p.text.orig !! $p.text;
-                $s ~= '</p>';
             }
+            $s ~= '</p>';
         }
         return $s;
     }
